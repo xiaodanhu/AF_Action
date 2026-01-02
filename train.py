@@ -62,7 +62,7 @@ def main(args):
 
     """2. create dataset / dataloader"""
     train_dataset = make_dataset(
-        cfg['dataset_name'], True, cfg['train_split'], cfg['model']['backbone_type'], cfg['round'], **cfg['dataset']
+        cfg['dataset_name'], True, cfg['train_split'], cfg['model']['backbone_type'], cfg['round'], use_full=True, **cfg['dataset']
     )
     # update cfg based on dataset attributes (fix to epic-kitchens)
     train_db_vars = train_dataset.get_attributes()
@@ -73,7 +73,7 @@ def main(args):
     train_loader_for_test = make_data_loader(train_dataset, False, None, 1, cfg['loader']['num_workers'])
 
     val_dataset = make_dataset(
-        cfg['dataset_name'], False, cfg['val_split'], cfg['model']['backbone_type'], cfg['round'], **cfg['dataset']
+        cfg['dataset_name'], False, cfg['val_split'], cfg['model']['backbone_type'], cfg['round'], use_full=True, **cfg['dataset']
     )
     # set bs = 1, and disable shuffle
     val_loader = make_data_loader(val_dataset, False, None, 1, cfg['loader']['num_workers'])

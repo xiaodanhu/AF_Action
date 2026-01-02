@@ -20,6 +20,7 @@ class FineGymDataset(Dataset):
         split,           # split, a tuple/list allowing concat of subsets
         backbone_type,
         round,
+        use_full,  # use full dataset for training
         feat_folder,     # folder for features
         json_file,       # json file for annotations
         feat_stride,     # temporal stride of the feats
